@@ -110,9 +110,17 @@
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
-    font-family: Arial, Helvetica, sans-serif;
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-geist-sans), system-ui, sans-serif;
+  }
+
+  /* Fix anchor/button text visibility across devices */
+  a,
+  button {
+    -webkit-text-fill-color: currentColor;
+    color: inherit;
   }
 }
 
@@ -149,9 +157,7 @@ Animated gradient for thinking text, creates a shimmering effect that moves acro
 }
 
 .animate-thinking-gradient {
-  /* Fallback */
-  background: linear-gradient(90deg, #666 0%, #bbb 50%, #666 100%);
-  /* Preferred (overrides when supported) */
+  /* Only apply to text explicitly marked */
   background: linear-gradient(
     90deg,
     oklch(0.14 0 0) 0%,
@@ -161,6 +167,18 @@ Animated gradient for thinking text, creates a shimmering effect that moves acro
   background-size: 200% 100%;
   background-clip: text;
   -webkit-background-clip: text;
+
+  /* SAFETY */
   -webkit-text-fill-color: transparent;
+  color: transparent;
+
   animation: thinking-gradient 2s linear infinite;
+}
+
+
+@supports (-webkit-touch-callout: none) {
+  a,
+  button {
+    -webkit-text-fill-color: currentColor;
+  }
 }

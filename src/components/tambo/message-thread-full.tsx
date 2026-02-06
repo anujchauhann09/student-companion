@@ -89,7 +89,7 @@ export const MessageThreadFull = React.forwardRef<
   ];
 
   return (
-    <div className="flex h-full w-full">
+    <div className="flex flex-col sm:flex-row h-full w-full">
       {/* Thread History Sidebar - rendered first if history is on the left */}
       {historyPosition === "left" && threadHistorySidebar}
 
@@ -99,7 +99,7 @@ export const MessageThreadFull = React.forwardRef<
         className={className}
         {...props}
       >
-        <ScrollableMessageContainer className="p-4">
+        <ScrollableMessageContainer className="p-4 flex-1 min-h-0">
           <ThreadContent variant={variant}>
             <ThreadContentMessages />
           </ThreadContent>
@@ -111,7 +111,7 @@ export const MessageThreadFull = React.forwardRef<
         </MessageSuggestions>
 
         {/* Message input */}
-        <div className="px-4 pb-4">
+        <div className="px-4 pb-4 pb-[env(safe-area-inset-bottom)]">
           <MessageInput>
             <MessageInputTextarea placeholder="Type your message or paste images..." />
             <MessageInputToolbar>
