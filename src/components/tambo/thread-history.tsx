@@ -90,9 +90,7 @@ const ThreadHistory = React.forwardRef<HTMLDivElement, ThreadHistoryProps>(
 
     // Update CSS variable when sidebar collapses/expands
     React.useEffect(() => {
-      const sidebarWidth = isCollapsed
-        ? "3rem"
-        : "min(16rem, 80vw)";
+      const sidebarWidth = isCollapsed ? "3rem" : "16rem";
       document.documentElement.style.setProperty(
         "--sidebar-width",
         sidebarWidth,
@@ -150,9 +148,7 @@ const ThreadHistory = React.forwardRef<HTMLDivElement, ThreadHistoryProps>(
           className={cn(
             "border-flat bg-container h-full transition-all duration-300 flex-none",
             position === "left" ? "border-r" : "border-l",
-            isCollapsed
-              ? "w-12"
-              : "w-full sm:w-64 max-w-[80vw]",
+            isCollapsed ? "w-12" : "w-64",
             className,
           )}
           {...props}
@@ -279,7 +275,7 @@ const ThreadHistoryNewButton = React.forwardRef<
       <PlusIcon className="h-4 w-4 bg-green-600 rounded-full text-white" />
       <span
         className={cn(
-          "text-sm font-medium whitespace-nowrap ml-8 pb-[2px] relative",
+          "text-sm font-medium whitespace-nowrap absolute left-8 pb-[2px] ",
           isCollapsed
             ? "opacity-0 max-w-0 overflow-hidden pointer-events-none"
             : "opacity-100 transition-all duration-300 delay-100",
@@ -318,7 +314,7 @@ const ThreadHistorySearch = React.forwardRef<
       <button
         onClick={expandOnSearch}
         className={cn(
-          "p-1 hover:bg-backdrop rounded-md cursor-pointer absolute inset-x-0 mx-auto",
+          "p-1 hover:bg-backdrop rounded-md cursor-pointer absolute left-1/2 -translate-x-1/2",
           isCollapsed
             ? "opacity-100 pointer-events-auto transition-all duration-300"
             : "opacity-0 pointer-events-none",

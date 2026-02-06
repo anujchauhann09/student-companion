@@ -106,23 +106,34 @@
   --sidebar-width: 3rem;
 }
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
 
+@layer base {
+  html,
   body {
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-geist-sans), system-ui, sans-serif;
   }
 
-  /* Fix anchor/button text visibility across devices */
+  /* Apply border styles ONLY to actual elements */
+  button,
+  input,
+  textarea,
+  select,
+  dialog,
+  fieldset,
+  img,
+  hr {
+    @apply border-border outline-ring/50;
+  }
+
+  /* 🔐 Mobile Safari text fix */
   a,
   button {
-    -webkit-text-fill-color: currentColor;
     color: inherit;
+    -webkit-text-fill-color: currentColor;
   }
 }
+
 
 /*
 This is a custom animation for the interactable components.
@@ -177,8 +188,8 @@ Animated gradient for thinking text, creates a shimmering effect that moves acro
 
 
 @supports (-webkit-touch-callout: none) {
-  a,
-  button {
-    -webkit-text-fill-color: currentColor;
+  body {
+    background-color: white;
+    color: rgb(17 24 39); /* text-gray-900 */
   }
 }
