@@ -34,46 +34,63 @@ export default function MotivationGuidanceCard({
     : "You’re not alone";
 
   return (
-    <div className="rounded-xl border p-6 bg-white shadow space-y-5">
+    <div className="rounded-2xl border bg-white shadow-sm hover:shadow-md transition-shadow p-6 space-y-6">
       {/* Header */}
-      <div>
-        <h2 className="text-2xl font-semibold">
+      <div className="space-y-1">
+        <h2 className="text-2xl font-bold tracking-tight flex items-center gap-2">
           🌱 Motivation & Guidance
         </h2>
-        <p className="text-sm text-blue-600 mt-1">
+        <p className="text-sm text-blue-600">
           {moodLabel}
         </p>
       </div>
 
       {/* Encouragement */}
-      <p className="text-gray-800 text-sm leading-relaxed">
-        {safeEncouragement}
-      </p>
+      <div className="rounded-xl bg-gray-50 px-4 py-3">
+        <p className="text-sm text-gray-800 leading-relaxed">
+          {safeEncouragement}
+        </p>
+      </div>
 
       {/* Tips */}
-      <div>
-        <h3 className="text-sm font-semibold mb-2">
+      <div className="space-y-2">
+        <h3 className="text-sm font-semibold text-gray-800">
           Small things that help
         </h3>
-        <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700">
+        <ul className="space-y-2 text-sm text-gray-700">
           {safeTips.map((tip, index) => (
-            <li key={index}>{tip}</li>
+            <li
+              key={index}
+              className="flex items-start gap-2"
+            >
+              <span className="mt-1 h-1.5 w-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+              <span>{tip}</span>
+            </li>
           ))}
         </ul>
       </div>
 
       {/* Next Step */}
-      <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 text-sm">
-        <span className="font-medium">
+      <div className="rounded-xl border border-blue-200 bg-blue-50/60 p-4 text-sm">
+        <span className="font-medium text-blue-800">
           Next step:
         </span>{" "}
-        {safeNextStep}
+        <span className="text-gray-800">
+          {safeNextStep}
+        </span>
       </div>
 
       {/* Hint */}
       <div className="text-xs text-gray-500">
-        💡 You can say things like “start a focus session” or
-        “show my progress” when you’re ready.
+        💡 You can say things like{" "}
+        <span className="italic">
+          “start a focus session”
+        </span>{" "}
+        or{" "}
+        <span className="italic">
+          “show my progress”
+        </span>{" "}
+        when you’re ready.
       </div>
     </div>
   );
