@@ -17,7 +17,7 @@ export default function FocusSessionCard({
   const [secondsLeft, setSecondsLeft] = useState<number>(
     resolvedTotalSeconds
   );
-  const [isRunning, setIsRunning] = useState<boolean>(true);
+  const [isRunning, setIsRunning] = useState<boolean>(false);
 
   /** 🔕 UI-only toggle */
   const [soundEnabled, setSoundEnabled] =
@@ -28,7 +28,7 @@ export default function FocusSessionCard({
    */
   useEffect(() => {
     setSecondsLeft(resolvedTotalSeconds);
-    setIsRunning(true);
+    setIsRunning(false);
   }, [resolvedTotalSeconds]);
 
   /**
